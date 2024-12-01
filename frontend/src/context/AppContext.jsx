@@ -62,7 +62,7 @@ const AppContextProvider = (props) => {
         }else{
             setUserData(false)
         }
-    }, [])
+    }, [token])
 
     return (
         <AppContext.Provider value={value}>
