@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios"
 import { toast } from "react-toastify";
-import { Loader, LoaderCircleIcon } from "lucide-react";
+import { HeartCrack, HeartHandshake, HeartPulseIcon, Loader, LoaderCircleIcon } from "lucide-react";
 
 export const AppContext = createContext()
 
@@ -69,8 +69,8 @@ const AppContextProvider = (props) => {
         return (
             <div className="flex flex-col justify-center items-center h-[100vh] w-full">
                 <div className=""></div>
-                <LoaderCircleIcon className="animate-spin" size={60} color="rgb(95,111,255)"/>
-                <h1 className="text-[rgb(95,111,255)] mt-10 mb-10 font-bold text-6xl">Prescripto</h1>
+                <HeartPulseIcon className="animate-pulse" size={100} color="rgb(95,111,255)"/>
+                <h1 className="text-[rgb(95,111,255)] mt-5 mb-10 font-bold text-6xl">Prescripto</h1>
             </div>
         )
     }
