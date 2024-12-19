@@ -65,7 +65,7 @@ const AppContextProvider = (props) => {
         }
     }, [token])
 
-    if(!userData && !doctors){
+    if(!userData || !doctors){
         return (
             <div className="flex flex-col justify-center items-center h-[100vh] w-full">
                 <div className=""></div>
