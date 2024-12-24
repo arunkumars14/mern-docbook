@@ -17,8 +17,11 @@ const AppContextProvider = (props) => {
 
     const [userData, setUserData] = useState(false)
 
+    const [loading, setLoading] = useState(true)
+
     const getDoctorsData = async() => {
         try {
+            setLoading(true);
             const {data} = await axios.get(backendUrl + "/api/doctor/list")
             if(data?.success){
                 setDoctors(data.doctors)
@@ -29,12 +32,14 @@ const AppContextProvider = (props) => {
         } catch (error) {
             console.log(error)
             toast.error(error.message)
+        }finally{
+            setLoading(false)
         }
     }
 
     const loadUserProfileData = async() => {
         try {
-
+            setLoading(true)
             const {data} = await axios.get(backendUrl+'/api/user/get-profile', {headers: {token}})
 
             if(data?.success){
@@ -46,6 +51,8 @@ const AppContextProvider = (props) => {
         } catch (error) {
             console.log(error)
             toast.error(error.message)
+        }finally{
+            setLoading(false)
         }
     }
 
@@ -65,7 +72,7 @@ const AppContextProvider = (props) => {
         }
     }, [token])
 
-    if(!userData || doctors.length == 0){
+    if(loading || doctors.length == 0){
         return (
             <div className="flex flex-col justify-center items-center h-[100vh] w-full">
                 <div className=""></div>
